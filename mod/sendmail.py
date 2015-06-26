@@ -5,7 +5,7 @@ import time
 url="http://sendcloud.sohu.com/webapi/mail.send.json"
 params = {"api_user": "flyhu2009_test_mlNXvt",
     "api_key" : "z7ulleXa5f4pugu6",
-    "to" : "jk409@189.cn",
+    "to" : "jk409@qq.cn",
     "from" : "service@sendcloud.im",
     "fromname" : "告警",
     "subject" :'%s 电脑开机'%time.strftime("%Y-%m-%d_%H:%M"),
