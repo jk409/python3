@@ -1,0 +1,175 @@
+{
+    "master": {
+        "roothost": "127.0.0.1",
+        "rootport": 30001,
+        "webport": 30002
+    },
+    "servers": {
+        "admin": {
+            "remoteport": [
+                {
+                    "rootport": 30008,
+                    "rootname": "gate"
+                }
+            ],
+            "redis": true,
+            "webport": 30003,
+            "name": "admin",
+            "app": "app.admin",
+            "log": "app/logs/admin.log"
+        },
+        "MA": {
+            "webport": 30004,
+            "name": "MA",
+            "db": true,
+            "app": "app.MA",
+            "log": "app/logs/MA.log"
+        },
+        "login": {
+            "rootport": 30005,
+            "webport": 30006,
+            "db": true,
+            "name": "login",
+            "app": "app.login",
+            "log": "app/logs/login.log"
+        },
+        "transit": {
+            "rootport": 30007,
+            "name": "transit",
+            "redis": true,
+            "db": true,
+            "app": "app.transit",
+            "log": "app/logs/transit.log"
+        },
+        "gate": {
+            "rootport": 30008,
+            "remoteport": [
+                {
+                    "roothost": "127.0.0.1",
+                    "rootport": 30007,
+                    "rootname": "transit"
+                },
+                {
+                    "roothost": "<=login_ip=>",
+                    "rootport": 30005,
+                    "rootname": "login"
+                },
+                {
+                    "roothost": "127.0.0.1",
+                    "rootport": 30010,
+                    "rootname": "world"
+                }
+            ],
+            "mem": true,
+            "redis": true,
+            "db": true,
+            "app": "app.gate",
+            "log": "app/logs/gate.log",
+            "name": "<=server_name=>",
+            "front_ip": "<=front_ip=>",
+            "front_port": 30009
+        },
+        "net": {
+            "netport": 30009,
+            "name": "net",
+            "remoteport": [
+                {
+                    "rootport": 30008,
+                    "rootname": "gate"
+                }
+            ],
+            "app": "app.net",
+            "log": "app/logs/net.log"
+        },
+        "game1": {
+            "remoteport": [
+                {
+                    "rootport": 30008,
+                    "rootname": "gate"
+                }
+            ],
+            "name": "game",
+            "db": true,
+            "app": "app.game",
+            "reload":"shared.db_opear.configs_data.game_configs",
+            "log": "app/logs/game1.log",
+            "redis": true
+        },
+        "game2": {
+            "remoteport": [
+                {
+                    "rootport": 30008,
+                    "rootname": "gate"
+                }
+            ],
+            "name": "game",
+            "db": true,
+            "app": "app.game",
+            "reload":"shared.db_opear.configs_data.game_configs",
+            "log": "app/logs/game2.log",
+            "redis": true
+        },
+        "game3": {
+            "remoteport": [
+                {
+                    "rootport": 30008,
+                    "rootname": "gate"
+                }
+            ],
+            "name": "game",
+            "db": true,
+            "app": "app.game",
+            "reload":"shared.db_opear.configs_data.game_configs",
+            "log": "app/logs/game3.log",
+            "redis": true
+        },
+        "game4": {
+            "remoteport": [
+                {
+                    "rootport": 30008,
+                    "rootname": "gate"
+                }
+            ],
+            "name": "game",
+            "db": true,
+            "app": "app.game",
+            "reload":"shared.db_opear.configs_data.game_configs",
+            "log": "app/logs/game4.log",
+            "redis": true
+        },
+        "chat": {
+            "name": "chat",
+            "remoteport": [
+                {
+                    "rootport": 30008,
+                    "rootname": "gate"
+                }
+            ],
+            "app": "app.chat",
+            "log": "app/logs/chat.log"
+        },
+        "world": {
+            "rootport": 30010,
+            "name": "world",
+            "app": "app.world",
+            "redis": true,
+            "log": "app/logs/world.log"
+        }
+    },
+    "db": {
+        "host": "127.0.0.1",
+        "user": "root",
+        "passwd": "123456",
+        "port": 3306,
+        "db": "db_traversing",
+        "charset": "utf8"
+    },
+    "redis": {
+        "urls": ["127.0.0.1:6379"],
+        "hostname": "tt"
+    },
+    "tlog":{
+         "host": "192.168.1.62",
+         "port": 30011
+    }
+}

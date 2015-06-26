@@ -1,0 +1,51 @@
+{% extends "main.html" %}
+{% block nem %}
+<div class="title"><h5>最近留言</h5></div>
+<ul class="ds-recent-comments" data-num-items="5"></ul>
+<!--多说js加载开始，一个页面只需要加载一次 -->
+<!--script type="text/javascript">
+var duoshuoQuery = {short_name:"adminlinux8080"};
+(function() {
+var ds = document.createElement('script');
+ds.type = 'text/javascript';ds.async = true;
+ds.src = 'http://static.duoshuo.com/embed.js';
+ds.charset = 'UTF-8';
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script-->
+</div>
+{% end %}
+
+{% block bodyy %}
+
+{% for i in lists %}
+<h1><a href="/test/{{i[0]}}">{{i[3]}}</a></h1></h1>
+<p class="entry-header">分类：<a href="/test/{{i[4]}}">{{i[4]}}</a>|<a href="/test/edit/{{i[0]}}">编辑</a> </p>
+    <div class="jumbotron">
+{% raw i[7] %}
+    </div>
+
+<p class="entry-header">发布时间: {{i[6]}} | 标签：{{i[5]}}| 阅读（10）| <a href="/test/{{i[0]}}">阅读全文...</a></p>
+<h1 class="page-header"></h1>
+{% end %}
+<form action="" method="get">
+  <!--ul class="pagination">
+      <li class="previous"><a href="#">上一页</a></li>
+    <li><a href="#">1 </a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+      <li class="next"><a href="#">下一页</a></li>
+  </ul-->
+ <ul class="pager">
+     <li class="previous"></li>
+    <li class="previous"><a href="/test?pag_num=-1">上一页</a></li>
+    <li class="next"><a href="/test?pag_num=1">下一页</a></li>
+  </ul>
+</form>
+<h2 class="sub-header"></h2>
+版权JK409所有
+{% end %}
+
+

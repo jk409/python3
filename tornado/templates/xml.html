@@ -1,0 +1,48 @@
+{% extends "main.html" %}
+{% block head_js %}
+<link rel="stylesheet" type="text/css" href="cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
+<!--link rel="stylesheet" type="text/css" href="//cdn.datatables.net/plug-ins/1.10.6/integration/bootstrap/3/dataTables.bootstrap.css"-->
+{% end %}
+{% block bodyy %}
+<h1 class="page-header">文章管理</h1>
+    <div class="table-responsive">
+         <form action=""  method="post">
+            <!--table class="table table-condensed"-->
+            <table id="example" class="table table-condensed" cellspacing="0" width="100%">
+              <thead>
+                <tr>
+                  <th>编号</th><th>作者</th><th>邮箱</th><th>文章名称</th><th>分类</th><th>标签</th><th>发布日期</th><th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for i in lists %}
+                <tr><td>{{i[0]}}</td><td>{{i[1]}}</td><td>{{i[2]}}</td><td>{{i[3]}}</td><td>{{i[4]}}</td><td>{{i[5]}}</td><td>{{i[6]}}</td>
+                    <td>
+                        <a href="/test/edit/{{i[0]}}"><button type="button" class="btn btn-sm btn-success" >编辑</button></a>
+                        <button type="submit" class="btn btn-sm btn-danger" name="id_del" value="{{i[0]}}">删除</button>
+                    </td>
+                </tr>
+              {% end %}
+              </tbody>
+            </table>
+         </form>
+    </div>
+<ul class="pagination">
+  <li><a href="#">&laquo;</a></li>
+  <li><a href="#">1</a></li>
+  <li><a href="#">2</a></li>
+  <li><a href="#">3</a></li>
+  <li><a href="#">4</a></li>
+  <li><a href="#">5</a></li>
+  <li><a href="#">&raquo;</a></li>
+</ul>
+<h1 class="page-header"></h1>
+ {% end %}
+{% block body_js %}
+<script type="text/javascript" src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#example').dataTable();
+} );
+</script>
+{% end %}
